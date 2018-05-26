@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基础知识桥接和仅主机模式的区别桥接模式在桥接模式下，相当于VM虚拟出了一个交换机，然后交换机也连接在物理的连接上，这时，虚拟主机都可以获取到和物理主机在同一个网段上的地址。所以可以通过桥接模式，来连接同一个局域网内的虚拟主机。比如你可以连接你的小伙伴的虚拟的主机，如果他也是桥接在当前的局域网中。 仅主机模式在仅主机的模式下，也相当于虚拟出了一个虚拟交换机，各个虚拟机都连接在虚拟的交换机上，同时你的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础知识">
+<meta property="og:url" content="http://yoursite.com/2018/05/26/基础知识/index.html">
+<meta property="og:site_name" content="FanJie&#39;s Blog">
+<meta property="og:description" content="基础知识桥接和仅主机模式的区别桥接模式在桥接模式下，相当于VM虚拟出了一个交换机，然后交换机也连接在物理的连接上，这时，虚拟主机都可以获取到和物理主机在同一个网段上的地址。所以可以通过桥接模式，来连接同一个局域网内的虚拟主机。比如你可以连接你的小伙伴的虚拟的主机，如果他也是桥接在当前的局域网中。 仅主机模式在仅主机的模式下，也相当于虚拟出了一个虚拟交换机，各个虚拟机都连接在虚拟的交换机上，同时你的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-26T11:37:34.506Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基础知识">
+<meta name="twitter:description" content="基础知识桥接和仅主机模式的区别桥接模式在桥接模式下，相当于VM虚拟出了一个交换机，然后交换机也连接在物理的连接上，这时，虚拟主机都可以获取到和物理主机在同一个网段上的地址。所以可以通过桥接模式，来连接同一个局域网内的虚拟主机。比如你可以连接你的小伙伴的虚拟的主机，如果他也是桥接在当前的局域网中。 仅主机模式在仅主机的模式下，也相当于虚拟出了一个虚拟交换机，各个虚拟机都连接在虚拟的交换机上，同时你的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/26/基础知识/"/>
+
+
+
+
+
+  <title>基础知识 | FanJie's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FanJie's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/26/基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FanJie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://p8d1sg7ey.bkt.clouddn.com/mmexport1445678645636.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FanJie's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基础知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-26T19:19:06+08:00">
+                2018-05-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="桥接和仅主机模式的区别"><a href="#桥接和仅主机模式的区别" class="headerlink" title="桥接和仅主机模式的区别"></a>桥接和仅主机模式的区别</h2><h3 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h3><p>在桥接模式下，相当于VM虚拟出了一个交换机，然后交换机也连接在物理的连接上，这时，虚拟主机都可以获取到和物理主机在同一个网段上的地址。所以可以通过桥接模式，来连接同一个局域网内的虚拟主机。比如你可以连接你的小伙伴的虚拟的主机，如果他也是桥接在当前的局域网中。</p>
+<h3 id="仅主机模式"><a href="#仅主机模式" class="headerlink" title="仅主机模式"></a>仅主机模式</h3><p>在仅主机的模式下，也相当于虚拟出了一个虚拟交换机，各个虚拟机都连接在虚拟的交换机上，同时你的物理主机也会连接在这台交换机上，地址是由你的VMWare的DHCP服务来分配的，所以自己的虚拟主机之间是可以互通的，但是即使你和你的小伙伴的地址是同一个网段内的都是不可以互通的。</p>
+<h2 id="设备的文件名"><a href="#设备的文件名" class="headerlink" title="设备的文件名"></a>设备的文件名</h2><p>如linux的哲学思想所说一切皆文件，在linux中设备也可以看做成是文件，<br>设备文件放在/dev目录下面，磁盘通过不同的接口接在设备上，其设备名也是不一样的。<br>设备 | 设备在Linux内的文件名<br>—|—<br>IDE硬盘 | /dev/hd[a-z]<br>SCSI硬盘 | /dev/sd[a-z]<br>SATA硬盘 | /dev/sd[a-z]<br>SAS硬盘 | /dev/sd[a-z]<br>U盘 | /dev/sd[a-z]<br>CDROM | /dev/sr0</p>
+<p>磁盘只有在分区之后才能使用，分区之后的命名为，这里就拿sda来说，比如第一个分区就叫做sda1，第二个分区就叫做sda2，以此类推！</p>
+<h2 id="终端terminal"><a href="#终端terminal" class="headerlink" title="终端terminal"></a>终端terminal</h2><h3 id="设备终端"><a href="#设备终端" class="headerlink" title="设备终端"></a>设备终端</h3><p>比如我们使用的键盘，鼠标和显示器</p>
+<h3 id="物理终端（-dev-console）"><a href="#物理终端（-dev-console）" class="headerlink" title="物理终端（/dev/console）"></a>物理终端（/dev/console）</h3><p>控制台console口</p>
+<h3 id="虚拟终端（-dev-tty-tty-2-6-）"><a href="#虚拟终端（-dev-tty-tty-2-6-）" class="headerlink" title="虚拟终端（/dev/tty,tty[2-6]）"></a>虚拟终端（/dev/tty,tty[2-6]）</h3><p>tty可以有N个，使用Ctrl+Alt+F[2-6]可以切换虚拟终端</p>
+<h3 id="图形化终端（-dev-tty1）"><a href="#图形化终端（-dev-tty1）" class="headerlink" title="图形化终端（/dev/tty1）"></a>图形化终端（/dev/tty1）</h3><p>在Centos6中是Ctrl+Alt+F1,但是在Centos7中，在哪一个终端启动即位于哪一个终端上</p>
+<h3 id="串行终端（-dev-ttyS-）"><a href="#串行终端（-dev-ttyS-）" class="headerlink" title="串行终端（/dev/ttyS#）"></a>串行终端（/dev/ttyS#）</h3><p>串行终端由ttyS+数字，可以有很多个</p>
+<h3 id="伪终端（-dev-pts-）"><a href="#伪终端（-dev-pts-）" class="headerlink" title="伪终端（/dev/pts/#）"></a>伪终端（/dev/pts/#）</h3><p>当使用xshell，CRT或者putty等客户端SSH连接到linux主机上的时候，就会有/dev/pts/0，后面的数字根据连接数递增。</p>
+<h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><p>shell是Linux系统的用户界面，提供了用户与内核进行交互的一种接口，它接收用户的命令然后送去内核去运行。</p>
+<h2 id="命令提示符"><a href="#命令提示符" class="headerlink" title="命令提示符"></a>命令提示符</h2><p>[root@centos6 ~]# 是命令提示符，root代表当前用户，@后面的是档期那的主机名，相当于hostname，空格后面的用户是当前所在的目录，#代表是管理员账户，普通用户是$。</p>
+<h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p>查看文件的内容，比如我们可以查看一下当前系统所安装的shell有哪些：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# cat /etc/shells </span><br><span class="line">/bin/sh</span><br><span class="line">/bin/bash</span><br><span class="line">/sbin/nologin</span><br><span class="line">/bin/dash</span><br><span class="line">/bin/tcsh</span><br><span class="line">/bin/csh</span><br></pre></td></tr></table></figure></p>
+<p>还可以查看一下当前的shell：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# echo $SHELL</span><br><span class="line">/bin/bash</span><br></pre></td></tr></table></figure></p>
+<h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><p>用来查看命令的类型，内置命令和外置命令会有不同的显示结果<br>内置命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# type cd</span><br><span class="line">cd is a shell builtin</span><br></pre></td></tr></table></figure></p>
+<p>外置命令：会显示出外置命令的路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# type cat</span><br><span class="line">cat is hashed (/bin/cat)</span><br></pre></td></tr></table></figure></p>
+<h2 id="which"><a href="#which" class="headerlink" title="which"></a>which</h2><p>查看外部命令的路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# which cat</span><br><span class="line">/bin/cat</span><br></pre></td></tr></table></figure></p>
+<h2 id="enable"><a href="#enable" class="headerlink" title="enable"></a>enable</h2><p>查看已经启用的内部命令</p>
+<ul>
+<li>-n command：禁用指定的内部命令</li>
+<li>-n：查看已经禁用的内部命令</li>
+<li>-a：启用指定的内部命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# enable -n cd</span><br><span class="line">[root@centos6 ~]# enable -n</span><br><span class="line">enable -n cd</span><br><span class="line">[root@centos6 ~]# enable cd</span><br><span class="line">[root@centos6 ~]# enable -a |wc -l</span><br><span class="line">61</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h2><p>外部命令在第一次执行的时候，会在系统下的路径去找，当执行过以后就会缓存下来，可以通过hash查看缓存的命令</p>
+<ul>
+<li>-d COMMAND：删除指定的hash</li>
+<li>-r：清除所有的hash<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# hash</span><br><span class="line">hits	command</span><br><span class="line">   2	/usr/bin/tty</span><br><span class="line">   1	/bin/cat</span><br><span class="line">   9	/bin/date</span><br><span class="line">   1	/usr/bin/man</span><br><span class="line">[root@centos6 ~]# type cat</span><br><span class="line">cat is hashed (/bin/cat)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h2><p>查看别名或定义别名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# alias</span><br><span class="line">alias copy=&apos;cp&apos;</span><br><span class="line">alias cp=&apos;cp -i&apos;</span><br><span class="line">alias l.=&apos;ls -d .* --color=auto&apos;</span><br><span class="line">alias ll=&apos;ls -l --color=auto&apos;</span><br><span class="line">alias ls=&apos;ls --color=auto&apos;</span><br><span class="line">alias mv=&apos;mv -i&apos;</span><br><span class="line">alias rm=&apos;rm -i&apos;</span><br><span class="line">alias which=&apos;alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde&apos;</span><br></pre></td></tr></table></figure></p>
+<p>定义新的别名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# alias copy=cp</span><br></pre></td></tr></table></figure></p>
+<p>取消别名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# unalias copy</span><br></pre></td></tr></table></figure></p>
+<p>取消所有别名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# unalias -a</span><br></pre></td></tr></table></figure></p>
+<p>当前定义的别名只在本次会话中有效，重启终端以后不会生效，如果想每次都生效的话，可以将别名写入~/.bashrc里面。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># .bashrc</span><br><span class="line"></span><br><span class="line"># User specific aliases and functions</span><br><span class="line"></span><br><span class="line">alias rm=&apos;rm -i&apos;</span><br><span class="line">alias cp=&apos;cp -i&apos;</span><br><span class="line">alias mv=&apos;mv -i&apos;</span><br><span class="line">alias nihao=&apos;echo nihao&apos;</span><br><span class="line"></span><br><span class="line"># Source global definitions</span><br><span class="line">if [ -f /etc/bashrc ]; then</span><br><span class="line">        . /etc/bashrc</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></p>
+<h2 id="命令执行的优先顺序"><a href="#命令执行的优先顺序" class="headerlink" title="命令执行的优先顺序"></a>命令执行的优先顺序</h2><h3 id="alias-gt-内部命令-gt-外部命令（hash-gt-PATH）"><a href="#alias-gt-内部命令-gt-外部命令（hash-gt-PATH）" class="headerlink" title="alias&gt;内部命令&gt;外部命令（hash&gt;PATH）"></a>alias&gt;内部命令&gt;外部命令（hash&gt;PATH）</h3><p>执行一条命令的时候，会现在alias中查找，如果找不到就在内部命令中去查找，如果还找不到的话就在外部命令中去查找，如果依然找不到的话就会在hash缓存中去查找，最后找不到的话就会去PATH下去找。</p>
+<p>那怎么使用命令不受别名的影响呢？</p>
+<ul>
+<li>/bin/ls：路径执行</li>
+<li>\ls：反斜线</li>
+<li>‘ls’：单引号</li>
+<li>“ls”：双引号</li>
+</ul>
+<h3 id="命令的格式"><a href="#命令的格式" class="headerlink" title="命令的格式"></a>命令的格式</h3><p>command options arguments<br>options是选项，arguments是参数</p>
+<h2 id="date"><a href="#date" class="headerlink" title="date"></a>date</h2><p>查看日期，此为软时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# date</span><br><span class="line">Thu May 17 19:19:07 CST 2018</span><br></pre></td></tr></table></figure></p>
+<p>输出指定格式的日期<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# date &quot;+%F %T %u&quot;</span><br><span class="line">2018-05-17 19:23:53 4</span><br></pre></td></tr></table></figure></p>
+<p>设置软时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# date -s &quot;2018-5-12 12:12:12&quot;</span><br><span class="line">Sat May 12 12:12:12 CST 2018</span><br></pre></td></tr></table></figure></p>
+<h2 id="cal"><a href="#cal" class="headerlink" title="cal"></a>cal</h2><p>显示当前月份的日历<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# cal</span><br><span class="line">      May 2018      </span><br><span class="line">Su Mo Tu We Th Fr Sa</span><br><span class="line">       1  2  3  4  5</span><br><span class="line"> 6  7  8  9 10 11 12</span><br><span class="line">13 14 15 16 17 18 19</span><br><span class="line">20 21 22 23 24 25 26</span><br><span class="line">27 28 29 30 31</span><br></pre></td></tr></table></figure></p>
+<p>显示指定的年月<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# cal 8 2018</span><br><span class="line">     August 2018    </span><br><span class="line">Su Mo Tu We Th Fr Sa</span><br><span class="line">          1  2  3  4</span><br><span class="line"> 5  6  7  8  9 10 11</span><br><span class="line">12 13 14 15 16 17 18</span><br><span class="line">19 20 21 22 23 24 25</span><br><span class="line">26 27 28 29 30 31</span><br></pre></td></tr></table></figure></p>
+<h2 id="clock和hwclock"><a href="#clock和hwclock" class="headerlink" title="clock和hwclock"></a>clock和hwclock</h2><p>显示硬件时间</p>
+<ul>
+<li>-s：将硬件时间写到软件时间</li>
+<li>-w：将软件时间写到硬件时间<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# date</span><br><span class="line">Wed Aug  8 18:18:20 CST 2018</span><br><span class="line">[root@centos6 ~]# clock -s</span><br><span class="line">[root@centos6 ~]# date</span><br><span class="line">Thu May 17 20:24:33 CST 2018</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="关机"><a href="#关机" class="headerlink" title="关机"></a>关机</h2><ul>
+<li>init 0：关机</li>
+<li>init 6：重启</li>
+<li>poweroff</li>
+<li>shutdown -h +minute：多少分钟后关机</li>
+<li>shutdown -h +0：立即关机</li>
+<li>shutdown 19:11：指定时间关机</li>
+<li>shutdown -c：取消关机</li>
+</ul>
+<h2 id="显示当前用户"><a href="#显示当前用户" class="headerlink" title="显示当前用户"></a>显示当前用户</h2><h3 id="whoami"><a href="#whoami" class="headerlink" title="whoami"></a>whoami</h3><p>显示当前的用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# whoami</span><br><span class="line">root</span><br></pre></td></tr></table></figure></p>
+<h3 id="who-am-i"><a href="#who-am-i" class="headerlink" title="who am i"></a>who am i</h3><p>显示当前用户的详细信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# who am i</span><br><span class="line">root     pts/0        2018-05-17 14:01 (172.18.118.140)</span><br></pre></td></tr></table></figure></p>
+<h3 id="who"><a href="#who" class="headerlink" title="who"></a>who</h3><p>显示当前所有用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# who</span><br><span class="line">root     pts/0        2018-05-17 14:01 (172.18.118.140)</span><br><span class="line">root     pts/1        2018-05-17 14:55 (172.18.118.140)</span><br></pre></td></tr></table></figure></p>
+<h3 id="w"><a href="#w" class="headerlink" title="w"></a>w</h3><p>显示当前所有用户的详细信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# w</span><br><span class="line"> 20:59:59 up  6:07,  2 users,  load average: 0.00, 0.00, 0.00</span><br><span class="line">USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">root     pts/0    172.18.118.140   14:01    1.00s  2.42s  0.60s w</span><br><span class="line">root     pts/1    172.18.118.140   14:55    1:39m  3.68s  0.01s man date</span><br></pre></td></tr></table></figure></p>
+<h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>比如复制一个很大的文件时，系统会等待复制完成才可以继续输入命令，而且一旦不小心关闭终端，复制就结束了，这样就要用到screen。</p>
+<h3 id="screen的安装"><a href="#screen的安装" class="headerlink" title="screen的安装"></a>screen的安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# mount /dev/sr0 /media/</span><br><span class="line">mount: block device /dev/sr0 is write-protected, mounting read-only</span><br><span class="line">[root@centos6 ~]# rpm -ivh /media/Packages/screen-4.0.3-19.el6.x86_64.rpm </span><br><span class="line">warning: /media/Packages/screen-4.0.3-19.el6.x86_64.rpm: Header V3 RSA/SHA1 Signature, key ID c105b9de: NOKEY</span><br><span class="line">Preparing...                ########################################### [100%]</span><br><span class="line">	package screen-4.0.3-19.el6.x86_64 is already installed</span><br></pre></td></tr></table></figure>
+<h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>输出，相当于易语言的调试输出或者java的println<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# echo nihao</span><br><span class="line">nihao</span><br><span class="line">[root@centos6 ~]# echo $SHELL</span><br><span class="line">/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>发出报警声,e表示扩展<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# echo -e &quot;\a&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="的用法"><a href="#的用法" class="headerlink" title="$的用法"></a>$的用法</h2><p>$varname 引用变量的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# echo $PATH</span><br><span class="line">/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin</span><br><span class="line">[root@centos6 ~]# a=1</span><br><span class="line">[root@centos6 ~]# echo $a</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
+<p>$()或反引号引用命令的执行结果<br>创建一个当前时间的txt文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# touch $(date &quot;+%H时%M分%S秒&quot;).txt</span><br><span class="line">[root@centos6 ~]# ls</span><br><span class="line">21时16分59秒.txt  Documents    install.log.syslog  Public</span><br><span class="line">anaconda-ks.cfg   Downloads    Music		   Templates</span><br><span class="line">Desktop		  install.log  Pictures		   Videos</span><br></pre></td></tr></table></figure></p>
+<p>$[]或$(()) 表示算术运算<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# echo $[19+10]</span><br><span class="line">29</span><br><span class="line">[root@centos6 ~]# echo $((19+10))</span><br><span class="line">29</span><br></pre></td></tr></table></figure></p>
+<p>${}或$varname<br>强调了变量的起始和终止的范围<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# s=123</span><br><span class="line">[root@centos6 ~]# echo $&#123;s&#125;456</span><br><span class="line">123456</span><br></pre></td></tr></table></figure></p>
+<h2 id="的用法-1"><a href="#的用法-1" class="headerlink" title="{}的用法"></a>{}的用法</h2><p>连续的值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# echo &#123;1..10&#125;</span><br><span class="line">1 2 3 4 5 6 7 8 9 10</span><br><span class="line">[root@centos6 ~]# echo &#123;a..z&#125;</span><br><span class="line">a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br><span class="line">[root@centos6 ~]# echo &#123;A..z&#125;</span><br><span class="line">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [  ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br></pre></td></tr></table></figure></p>
+<p>添加步长<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# echo &#123;1..10..2&#125;</span><br><span class="line">1 3 5 7 9</span><br></pre></td></tr></table></figure></p>
+<h2 id="history"><a href="#history" class="headerlink" title="history"></a>history</h2><p>查看命令历史</p>
+<ul>
+<li>-c：清空历史</li>
+<li>-a：追加本次会话新执行的命令历史至历史文件</li>
+<li>-w /PATH/TO/SOMEFILE：保存历史列表到指定的历史文件</li>
+<li>-r：读取历史文件中的所有历史到当前终端的历史</li>
+<li>-n：仅读取未度过的历史到当前终端的历史缓存</li>
+<li>!n：执行第n条的命令</li>
+<li>!!：再执行一次上次执行的命令</li>
+<li>Ctrl + r：来在命令历史中搜索命令</li>
+<li>Ctrl + g：从历史搜索模式退出<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# history </span><br><span class="line">    1  ifconfig </span><br><span class="line">    2  ifcon</span><br><span class="line">    3  ifconfig </span><br><span class="line">    4  ls</span><br><span class="line">    5  ls -l</span><br><span class="line">    6  ls -a</span><br><span class="line">    7  ls -la</span><br><span class="line">    8  man cd</span><br><span class="line">    9  umount /dev/sr0 /media/</span><br><span class="line">   10  df</span><br><span class="line">   11  mount /dev/sr0 /media/</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在登录shell的时候，会读取命令历史文件中的记录，在~/.bash_history里面，登录进shell后新执行的命令是保存在缓存中的，这些命令在退出shell的时候才会追加到.bash_history中。</p>
+<h2 id="bash常用的快捷键介绍"><a href="#bash常用的快捷键介绍" class="headerlink" title="bash常用的快捷键介绍"></a>bash常用的快捷键介绍</h2><ul>
+<li>Ctrl + l: 清屏，相当于clear</li>
+<li>Ctrl + c: 终止命令</li>
+<li>Alt + number: 按住Alt输入指定数字后，松开Alt，输入字符  重复显示该字符n次</li>
+<li>Alt + .: 重新调用前一个命令中最后一个参数</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/26/开博大吉/" rel="next" title="开博大吉">
+                <i class="fa fa-chevron-left"></i> 开博大吉
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://p8d1sg7ey.bkt.clouddn.com/mmexport1445678645636.jpg"
+                alt="FanJie" />
+            
+              <p class="site-author-name" itemprop="name">FanJie</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:361163403@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#桥接和仅主机模式的区别"><span class="nav-number">1.1.</span> <span class="nav-text">桥接和仅主机模式的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#桥接模式"><span class="nav-number">1.1.1.</span> <span class="nav-text">桥接模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仅主机模式"><span class="nav-number">1.1.2.</span> <span class="nav-text">仅主机模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设备的文件名"><span class="nav-number">1.2.</span> <span class="nav-text">设备的文件名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端terminal"><span class="nav-number">1.3.</span> <span class="nav-text">终端terminal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设备终端"><span class="nav-number">1.3.1.</span> <span class="nav-text">设备终端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理终端（-dev-console）"><span class="nav-number">1.3.2.</span> <span class="nav-text">物理终端（/dev/console）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟终端（-dev-tty-tty-2-6-）"><span class="nav-number">1.3.3.</span> <span class="nav-text">虚拟终端（/dev/tty,tty[2-6]）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图形化终端（-dev-tty1）"><span class="nav-number">1.3.4.</span> <span class="nav-text">图形化终端（/dev/tty1）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#串行终端（-dev-ttyS-）"><span class="nav-number">1.3.5.</span> <span class="nav-text">串行终端（/dev/ttyS#）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪终端（-dev-pts-）"><span class="nav-number">1.3.6.</span> <span class="nav-text">伪终端（/dev/pts/#）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell"><span class="nav-number">1.4.</span> <span class="nav-text">shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令提示符"><span class="nav-number">1.5.</span> <span class="nav-text">命令提示符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cat"><span class="nav-number">1.6.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type"><span class="nav-number">1.7.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#which"><span class="nav-number">1.8.</span> <span class="nav-text">which</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enable"><span class="nav-number">1.9.</span> <span class="nav-text">enable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hash"><span class="nav-number">1.10.</span> <span class="nav-text">hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alias"><span class="nav-number">1.11.</span> <span class="nav-text">alias</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令执行的优先顺序"><span class="nav-number">1.12.</span> <span class="nav-text">命令执行的优先顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#alias-gt-内部命令-gt-外部命令（hash-gt-PATH）"><span class="nav-number">1.12.1.</span> <span class="nav-text">alias&gt;内部命令&gt;外部命令（hash&gt;PATH）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令的格式"><span class="nav-number">1.12.2.</span> <span class="nav-text">命令的格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#date"><span class="nav-number">1.13.</span> <span class="nav-text">date</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cal"><span class="nav-number">1.14.</span> <span class="nav-text">cal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clock和hwclock"><span class="nav-number">1.15.</span> <span class="nav-text">clock和hwclock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关机"><span class="nav-number">1.16.</span> <span class="nav-text">关机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示当前用户"><span class="nav-number">1.17.</span> <span class="nav-text">显示当前用户</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#whoami"><span class="nav-number">1.17.1.</span> <span class="nav-text">whoami</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#who-am-i"><span class="nav-number">1.17.2.</span> <span class="nav-text">who am i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#who"><span class="nav-number">1.17.3.</span> <span class="nav-text">who</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#w"><span class="nav-number">1.17.4.</span> <span class="nav-text">w</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#screen"><span class="nav-number">1.18.</span> <span class="nav-text">screen</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">1.18.1.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#screen的安装"><span class="nav-number">1.18.2.</span> <span class="nav-text">screen的安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#echo"><span class="nav-number">1.19.</span> <span class="nav-text">echo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#的用法"><span class="nav-number">1.20.</span> <span class="nav-text">$的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#的用法-1"><span class="nav-number">1.21.</span> <span class="nav-text">{}的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history"><span class="nav-number">1.22.</span> <span class="nav-text">history</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash常用的快捷键介绍"><span class="nav-number">1.23.</span> <span class="nav-text">bash常用的快捷键介绍</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FanJie</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
